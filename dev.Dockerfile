@@ -18,7 +18,7 @@ RUN \
         useradd --create-home --shell /bin/bash --gid ${GROUP} --uid ${UID} ${USER};\
         \
         # Change workdir owner
-        chown -R ${USER}:${GROUP} ./ ${GEM_HOME};\
+        chown -R ${USER}:${GROUP} ./ ${GEM_HOME} ./node_modules;\
         \
         # Enable sudo without password
         echo "${USER} ALL=NOPASSWD: ALL" > /etc/sudoers.d/99-developer;\
