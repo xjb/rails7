@@ -1,0 +1,37 @@
+version: "3.9"
+
+x-services:
+  default: &default
+    image: rails7_app:latest
+    logging:
+      options:
+        max-size: 1k
+    restart: unless-stopped
+
+services:
+  ap:
+    <<: *default
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_MASTER_KEY:
+      SECRET_KEY_BASE:
+      RAILS_ENV: production
+    profiles: [production]
+
+  dev:
+    <<: *default
+    image: rails7_dev:latest
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_MASTER_KEY:
+      SECRET_KEY_BASE:
+    volumes:
+      - .:/app
