@@ -23,3 +23,6 @@ WORKDIR ${APP_HOME}
 COPY . .
 
 RUN if [ -f Gemfile ]; then bundle install; fi
+
+EXPOSE 3000
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
