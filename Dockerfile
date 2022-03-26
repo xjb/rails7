@@ -5,3 +5,5 @@ ARG APP_HOME=/app
 WORKDIR ${APP_HOME}
 
 COPY . .
+
+RUN if [ -f Gemfile ]; then bundle install; fi
