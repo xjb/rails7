@@ -5,6 +5,7 @@
 
 *Dockerfile*
 *compose.*
+Makefile
 
 
 # Ignore bundler config.
