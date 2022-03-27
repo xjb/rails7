@@ -1,3 +1,6 @@
+ARG RUBY_VERSION=3.1.1
+
+
 FROM curlimages/curl AS downloader
 WORKDIR /downloads
 # for yarn
@@ -8,7 +11,7 @@ RUN curl -s https://packages.microsoft.com/keys/microsoft.asc -O
 RUN curl -s https://packages.microsoft.com/config/debian/11/prod.list -o mssql-release.list
 
 
-FROM ruby:3.1.1
+FROM ruby:${RUBY_VERSION}
 
 COPY --from=downloader /downloads/* /tmp
 RUN \
