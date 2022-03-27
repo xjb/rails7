@@ -45,3 +45,6 @@ RUN \
 ENV PATH ${PATH}:/opt/mssql-tools18/bin:/opt/mssql-tools/bin
 
 USER ${USER}
+
+ENTRYPOINT ["bash", "entrypoint.sh"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
