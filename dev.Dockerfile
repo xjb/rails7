@@ -24,4 +24,19 @@ RUN \
         echo "${USER} ALL=NOPASSWD: ALL" > /etc/sudoers.d/99-developer;\
     fi
 
+RUN \
+    apt-get update;\
+    \
+    ACCEPT_EULA=Y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        sqlite3 \
+        default-mysql-client \
+        postgresql-client \
+        mssql-tools18 msodbcsql18 \
+    ;\
+    apt-get clean; rm -rf /var/lib/apt/lists/*
+
+# mssql-tools
+ENV PATH ${PATH}:/opt/mssql-tools18/bin:/opt/mssql-tools/bin
+
 USER ${USER}
