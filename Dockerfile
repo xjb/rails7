@@ -1,42 +1,26 @@
 ARG RUBY_VERSION=3.1.1
-
-
-FROM curlimages/curl AS downloader
-WORKDIR /downloads
-# for yarn
-RUN curl -sL https://deb.nodesource.com/setup_lts.x -O
-RUN curl -s https://dl.yarnpkg.com/debian/pubkey.gpg -O
-# for mssql
-RUN curl -s https://packages.microsoft.com/keys/microsoft.asc -O
-RUN curl -s https://packages.microsoft.com/config/debian/11/prod.list -o mssql-release.list
-
-
 FROM ruby:${RUBY_VERSION}
 
-COPY --from=downloader /downloads/* /tmp
+# for yarn
+ARG NODE_MAJOR=17
+RUN curl -sSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
+    curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - &&\
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# for mssql
+RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - &&\
+    curl -sSL https://packages.microsoft.com/config/debian/$(. /etc/os-release && echo ${VERSION_ID})/prod.list -o /etc/apt/sources.list.d/mssql-release.list
+
 RUN \
-    # for yarn
-    cat /tmp/setup_lts.x | bash - ;\
-    cat /tmp/pubkey.gpg | apt-key add - ;\
-    # for mssql
-    cat /tmp/microsoft.asc | apt-key add - ;\
-    \
-    # for yarn
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
-    # for mssql
-    cat /tmp/mssql-release.list | tee /etc/apt/sources.list.d/mssql-release.list ;\
-    \
-    apt-get update ;\
-    apt-get install -y --no-install-recommends \
+    apt-get update &&\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         # for yarn
         nodejs yarn \
         # for mssql
         freetds-dev \
-    ;\
-    apt-get clean; rm -rf /var/lib/apt/lists/*
+    &&\
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ARG APP_HOME=/app
-
 WORKDIR ${APP_HOME}
 
 COPY . .
