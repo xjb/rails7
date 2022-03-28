@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-set -Eeo pipefail
+#!/usr/bin/env sh
+set -eo pipefail
 
 function bootstrap() {
     :
@@ -24,7 +24,7 @@ container info.
     node    $(node --version)
     npm     $(npm --version)
     yarn    $(yarn --version)
-    rails   $(bundle exec rails --version)
+    rails   $(DISABLE_BOOTSNAP=1 bundle exec rails --version)
     sqlite3 $(sqlite3 --version)
     mysql   $(mysql --version)
     psql    $(psql --version)
