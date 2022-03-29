@@ -16,9 +16,9 @@ services:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
+      RAILS_ENV: production
       RAILS_MASTER_KEY:
       SECRET_KEY_BASE:
-      RAILS_ENV: production
     profiles: [production]
 
   dev:
@@ -31,7 +31,20 @@ services:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
+      RAILS_ENV:
       RAILS_MASTER_KEY:
       SECRET_KEY_BASE:
     volumes:
       - .:/app
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+      - assets:/app/public/assets
+      - storage:/app/storage
+    tmpfs:
+      - /app/tmp:uid=1000,gid=1000
+
+volumes:
+  bundle:
+  node_modules:
+  assets:
+  storage:
