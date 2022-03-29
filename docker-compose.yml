@@ -2,36 +2,51 @@ version: "3.9"
 
 x-services:
   default: &default
-    image: rails7_app:latest
     logging:
       options:
         max-size: 1k
     restart: unless-stopped
 
+  development: &development
+    <<: *default
+    image: rails7_dev:latest
+    environment:
+      TZ: Asia/Tokyo
+      # RAILS_ENV:
+      # RAILS_MASTER_KEY:
+      # SECRET_KEY_BASE:
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      # - node_modules:/app/node_modules
+      # - assets:/app/public/assets
+      # - storage:/app/storage
+    # tmpfs:
+    #   - /app/tmp:uid=1000,gid=1000
+
 services:
   ap:
-    <<: *default
+    image: rails7_app:latest
     build: .
     ports:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
-      RAILS_MASTER_KEY:
-      SECRET_KEY_BASE:
-      RAILS_ENV: production
+      # RAILS_ENV: production
+      # RAILS_MASTER_KEY:
+      # SECRET_KEY_BASE:
     profiles: [production]
 
   dev:
-    <<: *default
-    image: rails7_dev:latest
+    <<: *development
     build:
       context: .
       dockerfile: dev.Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      TZ: Asia/Tokyo
-      RAILS_MASTER_KEY:
-      SECRET_KEY_BASE:
-    volumes:
-      - .:/app
+
+volumes:
+  bundle:
+  node_modules:
+  assets:
+  storage:
