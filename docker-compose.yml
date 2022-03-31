@@ -12,17 +12,16 @@ x-services:
     image: rails7_dev:latest
     environment:
       TZ: Asia/Tokyo
-      # RAILS_ENV:
-      # RAILS_MASTER_KEY:
-      # SECRET_KEY_BASE:
+      RAILS_ENV:
+      RAILS_MASTER_KEY:
     volumes:
       - .:/app
       - bundle:/usr/local/bundle
-      # - node_modules:/app/node_modules
-      # - assets:/app/public/assets
-      # - storage:/app/storage
-    # tmpfs:
-    #   - /app/tmp:uid=1000,gid=1000
+      - node_modules:/app/node_modules
+      - assets:/app/public/assets
+      - storage:/app/storage
+    tmpfs:
+      - /app/tmp:uid=1000,gid=1000
 
 services:
   ap:
@@ -32,9 +31,8 @@ services:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
-      # RAILS_ENV: production
-      # RAILS_MASTER_KEY:
-      # SECRET_KEY_BASE:
+      RAILS_ENV: production
+      RAILS_MASTER_KEY:
     profiles: [production]
 
   dev:
