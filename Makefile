@@ -87,6 +87,15 @@ merged!:
 rspec:
 	${RUN} dev bundle exec rspec
 
+rubocop:
+	${RUN} dev bundle exec rubocop
+
+rubocop-auto-gen-config:
+	${RUN} dev bundle exec rubocop --auto-gen-config
+
+rubocop-auto-correct:
+	${RUN} dev bundle exec rubocop --auto-correct-all
+
 # %:
 # 	echo "$@ ${@D} ${@F} $< $^ $? $+ $*"
 
@@ -111,3 +120,6 @@ rails-new: rm-bundle
 
 rspec-install:
 	${RUN} dev bin/rails generate rspec:install
+
+rubocop-install:
+	${RUN} dev bundle exec rubocop --init
