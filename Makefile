@@ -84,6 +84,9 @@ merged?:
 merged!:
 	git branch --merged | grep -Pv "(^\*|main)" | xargs -r git branch -d
 
+rspec:
+	${RUN} dev bundle exec rspec
+
 # %:
 # 	echo "$@ ${@D} ${@F} $< $^ $? $+ $*"
 
@@ -105,3 +108,6 @@ rails-new: rm-bundle
 		--skip-test \
 		--javascript=webpack
 	echo "RAILS_MASTER_KEY=`cat ./config/master.key`" > .env
+
+rspec-install:
+	${RUN} dev bin/rails generate rspec:install
