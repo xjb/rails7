@@ -62,6 +62,9 @@ group :development, :test do
   gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
 
+  # erb-lint
+  gem 'erb_lint', require: false
+
   # security checks
   gem 'brakeman', require: false
 end
