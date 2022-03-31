@@ -96,6 +96,12 @@ rubocop-auto-gen-config:
 rubocop-auto-correct:
 	${RUN} dev bundle exec rubocop --auto-correct-all
 
+erblint:
+	${RUN} dev bundle exec erblint --lint-all
+
+erblint-auto-correct:
+	${RUN} dev bundle exec erblint --lint-all --autocorrect
+
 brakeman:
 	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1
 
