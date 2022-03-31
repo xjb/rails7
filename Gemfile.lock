@@ -70,6 +70,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
+    brakeman (5.2.1)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
@@ -247,6 +248,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  brakeman
   debug
   factory_bot_rails
   image_processing (~> 1.2)

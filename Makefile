@@ -96,6 +96,12 @@ rubocop-auto-gen-config:
 rubocop-auto-correct:
 	${RUN} dev bundle exec rubocop --auto-correct-all
 
+brakeman:
+	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1
+
+brakeman-interactive-ignore:
+	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1 --interactive-ignore
+
 # %:
 # 	echo "$@ ${@D} ${@F} $< $^ $? $+ $*"
 
