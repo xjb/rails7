@@ -1,5 +1,7 @@
 FROM rails7_app:latest
 
+ENV RAILS_ENV development
+
 ARG USER=developer
 ARG UID=1000
 ARG GROUP=${USER}

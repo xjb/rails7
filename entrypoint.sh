@@ -42,7 +42,7 @@ EOS
             'HTTP_PROXY' 'HTTPS_PROXY' 'FTP_PROXY' 'NO_PROXY' \
             'http_proxy' 'https_proxy' 'ftp_proxy' 'no_proxy' \
             'RAILS_ENV' \
-            'RAILS_MASTER_KEY' 'SECRET_KEY_BASE'
+            'RAILS_MASTER_KEY'
     do
         echo "    ${K}=$(eval echo '$'${K})"
     done
