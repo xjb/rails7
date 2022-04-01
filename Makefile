@@ -67,6 +67,12 @@ tasks:
 rails?:
 	${RUN} dev bin/rails --help
 
+rails/credentials/edit:
+	${RUN} dev bash -c "EDITOR=vim bin/rails credentials:edit"
+
+rails/credentials/show:
+	${RUN} dev bin/rails runner 'puts Rails.application.credentials.config.inspect'
+
 rails/%:
 	${RUN} dev bin/rails ${*}
 
