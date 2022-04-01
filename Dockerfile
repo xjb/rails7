@@ -27,5 +27,12 @@ COPY . .
 
 RUN if [ -f Gemfile ]; then bundle install; fi
 
+ENV RAILS_ENV production
+ARG RAILS_MASTER_KEY
+RUN if [ -x bin/rails ]; then \
+        bin/rails assets:precompile; \
+        bin/rails tmp:clear tmp:create;\
+    fi
+
 EXPOSE 3000
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]

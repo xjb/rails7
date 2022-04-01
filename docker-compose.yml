@@ -12,7 +12,6 @@ x-services:
     image: rails7_dev:latest
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV:
       RAILS_MASTER_KEY:
     volumes:
       - .:/app
@@ -26,13 +25,17 @@ x-services:
 services:
   ap:
     image: rails7_app:latest
-    build: .
+    build:
+      context: .
+      args:
+        RAILS_MASTER_KEY:
     ports:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: production
       RAILS_MASTER_KEY:
+    volumes:
+      - production-db:/app/db
     profiles: [production]
 
   dev:
@@ -57,3 +60,4 @@ volumes:
   node_modules:
   assets:
   storage:
+  production-db:
