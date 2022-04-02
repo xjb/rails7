@@ -8,6 +8,7 @@
 *compose.*
 Makefile
 /spec/examples.txt
+/coverage
 
 
 # Ignore bundler config.
