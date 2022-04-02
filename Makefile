@@ -69,10 +69,10 @@ brakeman-interactive-ignore:
 clean: clean?
 
 clean?:
-	git clean -fdx -e .env -e '*compose.override.y*ml' --dry-run
+	git clean -fdx -e .env -e '*compose.override.y*ml' -e 'db/*.sqlite3' --dry-run
 
 clean!:
-	git clean -fdx -e .env -e '*compose.override.y*ml'
+	git clean -fdx -e .env -e '*compose.override.y*ml' -e 'db/*.sqlite3'
 
 merged: merged?
 
