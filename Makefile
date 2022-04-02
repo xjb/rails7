@@ -136,6 +136,9 @@ rails-new: rm-bundle
 		--javascript=webpack
 	echo "RAILS_MASTER_KEY=`cat ./config/master.key`" > .env
 
+bootstrap-install:
+	${RUN} dev bin/rails css:install:bootstrap
+
 rspec-install:
 	${RUN} dev bin/rails generate rspec:install
 
