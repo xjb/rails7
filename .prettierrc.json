@@ -1,1 +1,73 @@
-{}
+{
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "printWidth": 140,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "htmlWhitespaceSensitivity": "css",
+    "endOfLine": "lf",
+    "overrides": [
+        {
+            "files": "*.js",
+            "options": {}
+        },
+        {
+            "files": [
+                "*.jsx"
+            ],
+            "options": {}
+        },
+        {
+            "files": [
+                "*.json"
+            ],
+            "options": {
+                "parser": "json"
+            }
+        },
+        {
+            "files": [
+                "*.yml",
+                "*.yaml"
+            ],
+            "options": {
+                "parser": "yaml"
+            }
+        },
+        {
+            "files": [
+                "*.css",
+                "*.scss",
+                "*.sass",
+                "*.less"
+            ],
+            "options": {
+                "parser": "css"
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "options": {
+                "parser": "html"
+            }
+        },
+        {
+            "files": [
+                "*.md",
+                "*.markdown"
+            ],
+            "options": {
+                "parser": "markdown"
+            }
+        }
+    ]
+}
