@@ -1,17 +1,18 @@
-RUN=docker compose run --rm --entrypoint ''
+COMPOSE=docker-compose
+RUN=${COMPOSE} run --rm --entrypoint ''
 
 
 build: build@ap
-	docker compose build
+	${COMPOSE} build
 
 build@ap:
-	docker compose build ap
+	${COMPOSE} build ap
 
 up:
-	docker compose up
+	${COMPOSE} up
 
 down:
-	- docker compose --profile production --profile debug down
+	- ${COMPOSE} --profile production --profile debug down
 
 install:
 	${RUN} dev bundle install
@@ -115,8 +116,8 @@ rubocop-install:
 # ==============================================================================
 
 build-full:
-	docker compose build ap --pull --no-cache
-	docker compose build --no-cache
+	${COMPOSE} build ap --pull --no-cache
+	${COMPOSE} build --no-cache
 
 rm-bundle: down
 	- docker volume rm rails7_bundle
@@ -181,7 +182,7 @@ bash:
 	${RUN} dev bash
 
 bash-exec:
-#	docker compose exec dev bash
+#	${COMPOSE} exec dev bash
 	docker exec -it `docker ps --filter name=dev --quiet` bash
 
 bash-run-image@dev:
