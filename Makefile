@@ -62,6 +62,18 @@ brakeman:
 brakeman-interactive-ignore:
 	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1 --interactive-ignore
 
+prettier:
+	${RUN} dev yarn prettier --check .
+
+prettier-auto-correct:
+	${RUN} dev yarn prettier --write .
+
+eslint:
+	${RUN} dev yarn eslint --format codeframe --ext .js,.vue .
+
+eslint-auto-correct:
+	${RUN} dev yarn eslint --format codeframe --ext .js,.vue --fix .
+
 
 
 # Cleanup targets
@@ -109,6 +121,25 @@ rspec-install:
 
 rubocop-install:
 	${RUN} dev bundle exec rubocop --init
+
+prettier-install:
+	${RUN} dev yarn add --dev eslint prettier eslint-config-prettier npm-run-all eslint-formatter-codeframe
+# Ok to proceed? (y)
+# ✔ How would you like to use ESLint? · style
+# ✔ What type of modules does your project use? · esm
+# ✔ Which framework does your project use? · none
+# ✔ Does your project use TypeScript? · No
+# ✔ Where does your code run? · browser
+# ✔ How would you like to define a style for your project? · guide
+# ✔ Which style guide do you want to follow? · standard
+# ✔ What format do you want your config file to be in? · JSON
+# ✔ The style guide "standard" requires eslint@^7.12.1. You are currently using eslint@8.12.0.
+#   Do you want to downgrade? · No
+# ✔ Would you like to install them now with npm? · Yes
+	${RUN} dev yarn eslint --init
+	echo {} > .prettierrc.json
+	touch .eslintignore
+	touch .prettierignore
 
 
 

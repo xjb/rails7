@@ -1,0 +1,6 @@
+# Ignore artifacts:
+builds
+/coverage
+
+# Ignore modules:
+/node_modules
