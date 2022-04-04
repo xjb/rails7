@@ -70,6 +70,7 @@ group :development, :test do
 
   # security checks
   gem "brakeman", require: false
+  gem "bundler-audit", require: false
 end
 
 group :development do
