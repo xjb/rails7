@@ -63,16 +63,20 @@ brakeman-interactive-ignore:
 	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1 --interactive-ignore
 
 prettier:
-	${RUN} dev yarn prettier --check .
+#	${RUN} dev yarn prettier --check .
+	${RUN} dev yarn lint:prettier:all
 
 prettier-auto-correct:
-	${RUN} dev yarn prettier --write .
+#	${RUN} dev yarn prettier --write .
+	${RUN} dev yarn fix:prettier .
 
 eslint:
-	${RUN} dev yarn eslint --format codeframe --ext .js,.vue .
+#	${RUN} dev yarn eslint --format codeframe --ext .js,.vue .
+	${RUN} dev yarn lint:eslint:all
 
 eslint-auto-correct:
-	${RUN} dev yarn eslint --format codeframe --ext .js,.vue --fix .
+#	${RUN} dev yarn eslint --format codeframe --ext .js,.vue --fix .
+	${RUN} dev yarn fix:eslint .
 
 
 
