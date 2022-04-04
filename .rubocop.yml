@@ -18,15 +18,15 @@ require:
 
 AllCops:
   Exclude:
-    - '.*/**/*'
-    - 'bin/**/*'
-    - 'coverage/**/*'
-    - 'db/schema.rb'
-    - 'log/**/*'
-    - 'node_modules/**/*'
-    - 'storage/**/*'
-    - 'tmp/**/*'
-    - 'vendor/**/*'
+    - ".*/**/*"
+    - "bin/**/*"
+    - "coverage/**/*"
+    - "db/schema.rb"
+    - "log/**/*"
+    - "node_modules/**/*"
+    - "storage/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
   NewCops: enable
   DisplayStyleGuide: true
   # StyleGuideBaseURL: https://rubystyle.guide
@@ -38,7 +38,7 @@ AllCops:
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 3
 # This cop supports safe auto-correction (--auto-correct).
@@ -58,20 +58,20 @@ Layout/FirstArrayElementIndentation:
 Metrics/AbcSize:
   # Max: 30
   Exclude:
-    - 'db/migrate/*'
+    - "db/migrate/*"
 
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 # IgnoredMethods: refine
 Metrics/BlockLength:
   # Max: 96
   Exclude:
-    - 'spec/**/*'
+    - "spec/**/*"
 
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
   # Max: 35
   Exclude:
-    - 'db/migrate/*'
+    - "db/migrate/*"
 
 # # Offense count: 1
 # RSpec/MultipleExpectations:
@@ -81,7 +81,7 @@ Metrics/MethodLength:
 # SupportedStyles: slashes, arguments
 Rails/FilePath:
   Exclude:
-    - 'spec/rails_helper.rb'
+    - "spec/rails_helper.rb"
 
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
@@ -98,7 +98,6 @@ Style/FrozenStringLiteralComment:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
 # # This cop supports safe auto-correction (--auto-correct).
 # # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # # URISchemes: http, https
