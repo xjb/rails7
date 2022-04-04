@@ -7,9 +7,9 @@
     "singleQuote": false,
     "quoteProps": "as-needed",
     "jsxSingleQuote": false,
-    "trailingComma": "es5",
+    "trailingComma": "none",
     "bracketSpacing": true,
-    "bracketSameLine": true,
+    "bracketSameLine": false,
     "arrowParens": "avoid",
     "htmlWhitespaceSensitivity": "css",
     "endOfLine": "lf",
@@ -19,54 +19,39 @@
             "options": {}
         },
         {
-            "files": [
-                "*.jsx"
-            ],
+            "files": ["*.jsx"],
             "options": {}
         },
         {
-            "files": [
-                "*.json"
-            ],
+            "files": ["*.json"],
             "options": {
-                "parser": "json"
+                "parser": "json",
+                "tabWidth": 4
             }
         },
         {
-            "files": [
-                "*.yml",
-                "*.yaml"
-            ],
+            "files": ["*.yml", "*.yaml"],
             "options": {
                 "parser": "yaml"
             }
         },
         {
-            "files": [
-                "*.css",
-                "*.scss",
-                "*.sass",
-                "*.less"
-            ],
+            "files": ["*.css", "*.scss", "*.sass", "*.less"],
             "options": {
                 "parser": "css"
             }
         },
         {
-            "files": [
-                "*.html"
-            ],
+            "files": ["*.html"],
             "options": {
                 "parser": "html"
             }
         },
         {
-            "files": [
-                "*.md",
-                "*.markdown"
-            ],
+            "files": ["*.md", "*.markdown"],
             "options": {
-                "parser": "markdown"
+                "parser": "markdown",
+                "tabWidth": 4
             }
         }
     ]
