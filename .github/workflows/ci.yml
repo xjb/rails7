@@ -1,0 +1,122 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      # Add or Replace any other security checks here
+      - name: Run security checks
+        run: |
+          bundle exec bundler-audit check --update
+          bundle exec brakeman -q -w2
+      # Add or Replace any other Linters here
+      - name: Run linters
+        run: |
+          bundle exec rubocop --parallel
+      - name: Run ERB linters
+        run: |
+          bundle exec erblint --lint-all
+      - name: Run zeitwerk:check
+        run: |
+          bundle exec rails zeitwerk:check
+
+  run-node-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17
+          cache: "yarn"
+      - name: Set up Yarn
+        run: yarn install
+
+      - name: Run linters
+        run: |
+          yarn lint
+
+  db-seed:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rails-env: ["production", "test", "development"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run db:seed
+        env:
+          RAILS_ENV: ${{ matrix.rails-env }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        run: |
+          bundle exec rails db:migrate:reset db:seed
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ["3.1"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+        # change this to (see https://github.com/ruby/setup-ruby#versioning):
+        uses: ruby/setup-ruby@v1
+        # uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17
+          cache: "yarn"
+
+      - name: Set up Yarn
+        run: yarn install
+
+      - name: Run tests
+        run: bundle exec rspec
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@master
+        with:
+          name: coverage
+          path: coverage
+          retention-days: 3
