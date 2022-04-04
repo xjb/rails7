@@ -49,5 +49,7 @@ ENV EDITOR vim
 
 USER ${USER}
 
+RUN gem install foreman
+
 ENTRYPOINT ["bash", "entrypoint.sh"]
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/dev"]
