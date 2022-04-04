@@ -1,0 +1,106 @@
+inherit_from: .rubocop_todo.yml
+
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://docs.rubocop.org/rubocop/configuration
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - '.*/**/*'
+    - 'bin/**/*'
+    - 'coverage/**/*'
+    - 'db/schema.rb'
+    - 'log/**/*'
+    - 'node_modules/**/*'
+    - 'storage/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+  NewCops: enable
+  DisplayStyleGuide: true
+  # StyleGuideBaseURL: https://rubystyle.guide
+  ExtraDetails: true
+  TargetRubyVersion: 3.1
+
+# This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: TreatCommentsAsGroupSeparators, ConsiderPunctuation, Include.
+# Include: **/*.gemfile, **/Gemfile, **/gems.rb
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+# Offense count: 3
+# This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: EnforcedStyle, IndentationWidth.
+# SupportedStyles: consistent, consistent_relative_to_receiver, special_for_inner_method_call, special_for_inner_method_call_in_parentheses
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent
+
+# Offense count: 2
+# This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: IndentationWidth.
+# SupportedStyles: special_inside_parentheses, consistent, align_brackets
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+# Configuration parameters: IgnoredMethods, CountRepeatedAttributes.
+Metrics/AbcSize:
+  # Max: 30
+  Exclude:
+    - 'db/migrate/*'
+
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+# IgnoredMethods: refine
+Metrics/BlockLength:
+  # Max: 96
+  Exclude:
+    - 'spec/**/*'
+
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+Metrics/MethodLength:
+  # Max: 35
+  Exclude:
+    - 'db/migrate/*'
+
+# # Offense count: 1
+# RSpec/MultipleExpectations:
+#   Max: 2
+
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: slashes, arguments
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+# Configuration parameters: AllowedConstants.
+Style/Documentation:
+  Enabled: false
+
+# This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: always, always_true, never
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+# This cop supports safe auto-correction (--auto-correct).
+# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
+# SupportedStyles: single_quotes, double_quotes
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# # This cop supports safe auto-correction (--auto-correct).
+# # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# # URISchemes: http, https
+# Layout/LineLength:
+#   Max: 140

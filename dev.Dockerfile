@@ -45,11 +45,13 @@ RUN \
 # mssql-tools
 ENV PATH ${PATH}:/opt/mssql-tools18/bin:/opt/mssql-tools/bin
 
-ENV EDITOR vim
-
 USER ${USER}
 
 RUN gem install foreman
+
+# VSCode debugger
+RUN gem install ruby-debug-ide --pre && \
+    gem install debase --pre
 
 ENTRYPOINT ["bash", "entrypoint.sh"]
 CMD ["bin/dev"]
