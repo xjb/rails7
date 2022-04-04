@@ -62,6 +62,9 @@ brakeman:
 brakeman-interactive-ignore:
 	${RUN} dev bundle exec brakeman --rails7 --run-all-checks --confidence-level 1 --interactive-ignore
 
+bundler-audit:
+	${RUN} dev bundle exec bundler-audit check --update
+
 prettier:
 #	${RUN} dev yarn prettier --check .
 	${RUN} dev yarn lint:prettier:all
