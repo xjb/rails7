@@ -28,6 +28,7 @@ services:
       context: .
       args:
         RAILS_MASTER_KEY:
+        RAILS_SERVE_STATIC_FILES:
     ports:
       - "3000:3000"
     environment:
