@@ -28,12 +28,12 @@ services:
       context: .
       args:
         RAILS_MASTER_KEY:
-        RAILS_SERVE_STATIC_FILES:
     ports:
       - "3000:3000"
     environment:
       TZ: Asia/Tokyo
       RAILS_MASTER_KEY:
+      RAILS_SERVE_STATIC_FILES: "true"
     volumes:
       - production-db:/app/db
     profiles: [production]
