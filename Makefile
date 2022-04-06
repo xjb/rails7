@@ -86,6 +86,8 @@ eslint-auto-correct:
 #	${RUN} dev yarn eslint --format codeframe --ext .js,.vue --fix .
 	${RUN} dev yarn fix:eslint .
 
+auto-correct: rubocop-auto-correct erblint-auto-correct eslint-auto-correct prettier-auto-correct
+
 
 
 # Cleanup targets
