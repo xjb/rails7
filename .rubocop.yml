@@ -73,7 +73,19 @@ Metrics/MethodLength:
   Exclude:
     - "db/migrate/*"
 
-# # Offense count: 1
+# Configuration parameters: Prefixes.
+# Prefixes: when, with, without
+RSpec/ContextWording:
+  Enabled: false
+
+# Configuration parameters: CountAsOne.
+# RSpec/ExampleLength:
+#   Max: 7
+
+# Configuration parameters: AssignmentOnly.
+# RSpec/InstanceVariable:
+# Enabled: false
+
 # RSpec/MultipleExpectations:
 #   Max: 2
 
