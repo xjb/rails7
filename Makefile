@@ -22,6 +22,11 @@ db-migrate: db-migrate@dev
 db-migrate@%:
 	${RUN} ${*} bin/rails db:create db:migrate
 
+db-seed: db-seed@dev
+
+db-seed@%:
+	${RUN} ${*} bin/rails db:seed
+
 db-reset: db-reset@dev
 
 db-reset@%:
