@@ -3,7 +3,7 @@ if Rails.env.development?
     ApplicationController.class_eval do
       after_action :enable_web_console
 
-      private
+      protected
 
       def enable_web_console
         console
