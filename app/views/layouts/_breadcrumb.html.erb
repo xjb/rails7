@@ -1,0 +1,16 @@
+<% local_assigns.fetch(:items, {}).tap do |items| %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+
+      <% items.each.with_index do |(label, path), i| %>
+        <% if path.blank? %>
+          <li class="breadcrumb-item active"><%= label %></li>
+        <% else %>
+          <li class="breadcrumb-item">
+            <%= link_to label, path %>
+        <% end %>
+      <% end %>
+    </ol>
+  </nav>
+<% end %>
