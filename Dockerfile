@@ -1,5 +1,8 @@
-ARG RUBY_VERSION=3.1.1
+ARG RUBY_VERSION=3.1.2
 FROM ruby:${RUBY_VERSION}
+
+RUN gem update --system &&\
+    gem cleanup
 
 # for yarn
 ARG NODE_MAJOR=17
