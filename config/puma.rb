@@ -43,10 +43,12 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 plugin :tmp_restart
 
 # Enable SSL
-require "localhost/authority"
-authority = Localhost::Authority.fetch
+if ENV.fetch("RAILS_ENV", "development") == "development"
+  require "localhost/authority"
+  authority = Localhost::Authority.fetch
 
-ssl_bind "0.0.0.0", "3443", {
-  key: authority.key_path,
-  cert: authority.certificate_path
-}
+  ssl_bind "0.0.0.0", "3443", {
+    key: authority.key_path,
+    cert: authority.certificate_path
+  }
+end
