@@ -53,5 +53,7 @@ RUN gem install foreman
 RUN gem install ruby-debug-ide --pre && \
     gem install debase --pre
 
+RUN bundle config unset without
+
 ENTRYPOINT ["bash", "entrypoint.sh"]
 CMD ["bin/dev"]

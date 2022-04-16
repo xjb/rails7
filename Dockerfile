@@ -28,13 +28,16 @@ WORKDIR ${APP_HOME}
 
 COPY . .
 
-RUN if [ -f Gemfile ]; then bundle install; fi
+RUN if [ -f Gemfile ]; then \
+        bundle config set without "development test";\
+        bundle install;\
+    fi
 
 ENV RAILS_ENV production
 ARG RAILS_MASTER_KEY
 RUN if [ -x bin/rails ]; then \
-        bin/rails assets:precompile; \
-        bin/rails tmp:clear tmp:create;\
+        bin/rails assets:precompile assets:clean;\
+        DISABLE_BOOTSNAP=1 bin/rails tmp:clear tmp:create;\
     fi
 
 EXPOSE 3000
