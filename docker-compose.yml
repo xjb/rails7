@@ -20,6 +20,8 @@ x-services:
       - storage:/app/storage
     tmpfs:
       - /app/tmp:uid=1000,gid=1000
+    tty: true
+    stdin_open: true
 
 services:
   ap:

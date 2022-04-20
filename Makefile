@@ -143,13 +143,13 @@ prettier-install:
 # ✔ What type of modules does your project use? · esm
 # ✔ Which framework does your project use? · none
 # ✔ Does your project use TypeScript? · No
-# ✔ Where does your code run? · browser
+# ✔ Where does your code run? · browser, node
 # ✔ How would you like to define a style for your project? · guide
 # ✔ Which style guide do you want to follow? · standard
 # ✔ What format do you want your config file to be in? · JSON
 # ✔ The style guide "standard" requires eslint@^7.12.1. You are currently using eslint@8.12.0.
 #   Do you want to downgrade? · No
-# ✔ Would you like to install them now with npm? · Yes
+# ✔ Would you like to install them now with npm? · No
 	${RUN} dev yarn eslint --init
 	echo {} > .prettierrc.json
 	touch .eslintignore

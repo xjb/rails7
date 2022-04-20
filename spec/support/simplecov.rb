@@ -3,8 +3,8 @@ require "simplecov"
 SimpleCov.start "rails" do
   enable_coverage :branch
 
-  # minimum_coverage 90
-  # minimum_coverage_by_file 80
+  # minimum_coverage line: 90, branch: 80
+  # minimum_coverage_by_file line: 90, branch: 80
 
   # add_filter do |source_file|
   #   source_file.lines.count < 5
