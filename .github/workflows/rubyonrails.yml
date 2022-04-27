@@ -18,6 +18,9 @@ on:
 permissions:
   contents: read
 
+env:
+  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
 jobs:
   run-lint:
     runs-on: ubuntu-latest
@@ -81,7 +84,6 @@ jobs:
       - name: Run db:seed
         env:
           RAILS_ENV: ${{ matrix.rails-env }}
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bundle exec rails db:migrate:reset db:seed
 
@@ -112,8 +114,6 @@ jobs:
         run: yarn install
 
       - name: Run tests
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rspec
 
       - name: Upload coverage
