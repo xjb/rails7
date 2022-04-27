@@ -3,7 +3,7 @@ module Authenticable
 
   included do
     before_action :assert_signed_in
-    helper_method :signed_in?, :google?
+    helper_method :signed_in?, :google?, :github?
   end
 
   protected
@@ -16,10 +16,12 @@ module Authenticable
   def sign_in(user)
     # session[:uid] = user.id
     session[:uid] = user.uid
+    session[:provider] = user.provider
   end
 
   def sign_out
     session.delete(:uid)
+    session.delete(:provider)
     @current_user = nil
   end
 
@@ -34,7 +36,10 @@ module Authenticable
   end
 
   def google?
-    # "provider"=>"google_oauth2"
-    session[:uid].present?
+    session[:provider] == "google_oauth2"
+  end
+
+  def github?
+    session[:provider] == "github"
   end
 end
