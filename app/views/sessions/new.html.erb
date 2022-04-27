@@ -7,5 +7,9 @@
                                          class: "btn btn-primary" do %>
       <i class="bi bi-google me-3"></i>Sign in with Google
     <% end %>
+    <%= button_to "/auth/github", method: :post, data: { turbo: false }, form_class: "col d-grid",
+                                         class: "btn btn-dark" do %>
+      <i class="bi bi-github me-3"></i>Sign in with GitHub
+    <% end %>
   </div>
 </div>
