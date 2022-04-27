@@ -112,6 +112,8 @@ jobs:
         run: yarn install
 
       - name: Run tests
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rspec
 
       - name: Upload coverage
