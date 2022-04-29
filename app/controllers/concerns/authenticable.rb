@@ -7,6 +7,7 @@ module Authenticable
     helper_method :google?
     helper_method :github?
     helper_method :microsoft?
+    helper_method :gitlab?
   end
 
   protected
@@ -48,5 +49,9 @@ module Authenticable
 
   def microsoft?
     session[:provider].to_s.start_with? "microsoft"
+  end
+
+  def gitlab?
+    session[:provider] == "gitlab"
   end
 end

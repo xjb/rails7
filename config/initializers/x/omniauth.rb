@@ -16,4 +16,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            Rails.application.credentials.microsoft[:client_secret],
            #  scope: "openid email profile User.Read"
            scope: "openid"
+
+  provider :gitlab,
+           Rails.application.credentials.gitlab[:client_id],
+           Rails.application.credentials.gitlab[:client_secret],
+           scope: "openid read_user"
 end

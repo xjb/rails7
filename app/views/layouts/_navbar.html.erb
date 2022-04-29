@@ -17,14 +17,15 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <% if google? %>
+              <% case %>
+              <% when google? %>
                 <i class="bi bi-google"></i>
-              <% end %>
-              <% if github? %>
+              <% when github? %>
                 <i class="bi bi-github"></i>
-              <% end %>
-              <% if microsoft? %>
+              <% when microsoft? %>
                 <i class="bi bi-microsoft"></i>
+              <% else %>
+                <i class="bi bi-person-circle"></i>
               <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
