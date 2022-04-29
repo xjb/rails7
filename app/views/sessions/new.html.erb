@@ -27,5 +27,9 @@
                   method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-secondary" do %>
       Sign in with Keycloak
     <% end %>
+    <%= button_to "/auth/twitter2",
+                  method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-primary" do %>
+      <i class="bi bi-twitter me-3"></i>Sign in with Twitter
+    <% end %>
   </div>
 </div>

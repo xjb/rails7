@@ -9,6 +9,7 @@ module Authenticable
     helper_method :microsoft?
     helper_method :gitlab?
     helper_method :keycloak?
+    helper_method :twitter?
   end
 
   protected
@@ -58,5 +59,9 @@ module Authenticable
 
   def keycloak?
     session[:provider] == "keycloak"
+  end
+
+  def twitter?
+    session[:provider] == "twitter2"
   end
 end
