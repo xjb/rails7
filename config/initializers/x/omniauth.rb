@@ -6,4 +6,14 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :github,
            Rails.application.credentials.github[:client_id],
            Rails.application.credentials.github[:client_secret]
+
+  provider :microsoft_office365,
+           Rails.application.credentials.microsoft[:client_id],
+           Rails.application.credentials.microsoft[:client_secret]
+
+  provider :microsoft_graph,
+           Rails.application.credentials.microsoft[:client_id],
+           Rails.application.credentials.microsoft[:client_secret],
+           #  scope: "openid email profile User.Read"
+           scope: "openid"
 end

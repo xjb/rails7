@@ -23,6 +23,9 @@
               <% if github? %>
                 <i class="bi bi-github"></i>
               <% end %>
+              <% if microsoft? %>
+                <i class="bi bi-microsoft"></i>
+              <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><%= link_to "Sign out", sign_out_path, class: "dropdown-item" %></li>

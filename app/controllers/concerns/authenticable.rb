@@ -3,7 +3,10 @@ module Authenticable
 
   included do
     before_action :assert_signed_in
-    helper_method :signed_in?, :google?, :github?
+    helper_method :signed_in?
+    helper_method :google?
+    helper_method :github?
+    helper_method :microsoft?
   end
 
   protected
@@ -41,5 +44,9 @@ module Authenticable
 
   def github?
     session[:provider] == "github"
+  end
+
+  def microsoft?
+    session[:provider].to_s.start_with? "microsoft"
   end
 end
