@@ -1,24 +1,44 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2,
-           Rails.application.credentials.google[:client_id],
-           Rails.application.credentials.google[:client_secret]
+  provider  :google_oauth2,
+            Rails.application.credentials.google[:client_id],
+            Rails.application.credentials.google[:client_secret]
+end
 
-  provider :github,
-           Rails.application.credentials.github[:client_id],
-           Rails.application.credentials.github[:client_secret]
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider  :github,
+            Rails.application.credentials.github[:client_id],
+            Rails.application.credentials.github[:client_secret]
+end
 
-  provider :microsoft_office365,
-           Rails.application.credentials.microsoft[:client_id],
-           Rails.application.credentials.microsoft[:client_secret]
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider  :microsoft_office365,
+            Rails.application.credentials.microsoft[:client_id],
+            Rails.application.credentials.microsoft[:client_secret]
+end
 
-  provider :microsoft_graph,
-           Rails.application.credentials.microsoft[:client_id],
-           Rails.application.credentials.microsoft[:client_secret],
-           #  scope: "openid email profile User.Read"
-           scope: "openid"
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider  :microsoft_graph,
+            Rails.application.credentials.microsoft[:client_id],
+            Rails.application.credentials.microsoft[:client_secret],
+            # scope: "openid email profile User.Read"
+            scope: "openid"
+end
 
-  provider :gitlab,
-           Rails.application.credentials.gitlab[:client_id],
-           Rails.application.credentials.gitlab[:client_secret],
-           scope: "openid read_user"
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider  :gitlab,
+            Rails.application.credentials.gitlab[:client_id],
+            Rails.application.credentials.gitlab[:client_secret],
+            scope: "openid read_user"
+end
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider  :keycloak_openid,
+            Rails.application.credentials.keycloak[:client_id],
+            Rails.application.credentials.keycloak[:client_secret],
+            client_options: {
+              site: ENV.fetch("KEYCLOAK_URL", ""),
+              realm: "master",
+              base_url: ""
+            },
+            name: "keycloak"
 end

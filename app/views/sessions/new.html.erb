@@ -23,5 +23,9 @@
                   method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-dark" do %>
       Sign in with GitLab
     <% end %>
+    <%= button_to "/auth/keycloak",
+                  method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-secondary" do %>
+      Sign in with Keycloak
+    <% end %>
   </div>
 </div>

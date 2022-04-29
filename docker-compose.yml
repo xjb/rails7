@@ -13,6 +13,7 @@ x-services:
     environment:
       TZ: Asia/Tokyo
       RAILS_MASTER_KEY:
+      KEYCLOAK_URL:
     volumes:
       - .:/app
       - bundle:/usr/local/bundle
@@ -36,6 +37,7 @@ services:
       TZ: Asia/Tokyo
       RAILS_MASTER_KEY:
       RAILS_SERVE_STATIC_FILES: "true"
+      KEYCLOAK_URL:
     volumes:
       - production-db:/app/db
     profiles: [production]
@@ -63,8 +65,20 @@ services:
     ports:
       - "8025:8025"
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.0
+    command: start-dev
+    ports:
+      - "8080:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+
 volumes:
   bundle:
   node_modules:
   storage:
   production-db:
+  keycloak-data:
