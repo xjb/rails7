@@ -19,5 +19,9 @@
                   method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-light" do %>
       <i class="bi bi-microsoft me-3"></i>Sign in with Microsoft Graph
     <% end %>
+    <%= button_to "/auth/gitlab",
+                  method: :post, data: { turbo: false }, form_class: "col d-grid", class: "btn btn-dark" do %>
+      Sign in with GitLab
+    <% end %>
   </div>
 </div>

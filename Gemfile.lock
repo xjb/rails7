@@ -182,6 +182,9 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
+    omniauth-gitlab (4.0.0)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.7.1)
     omniauth-google-oauth2 (1.0.1)
       jwt (>= 2.0)
       oauth2 (~> 1.1)
@@ -343,6 +346,7 @@ DEPENDENCIES
   jsbundling-rails
   localhost
   omniauth-github!
+  omniauth-gitlab
   omniauth-google-oauth2
   omniauth-microsoft-office365
   omniauth-microsoft_graph
