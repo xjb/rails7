@@ -75,6 +75,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    aes_key_wrap (1.1.0)
     ast (2.4.2)
     better_html (1.0.16)
       actionview (>= 4.0)
@@ -84,6 +85,7 @@ GEM
       html_tokenizer (~> 0.0.6)
       parser (>= 2.4)
       smart_properties
+    bindata (2.4.10)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -140,9 +142,13 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
+    json-jwt (1.13.0)
+      activesupport (>= 4.2)
+      aes_key_wrap
+      bindata
     jwt (2.3.0)
     localhost (1.1.9)
-    loofah (2.16.0)
+    loofah (2.17.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -178,9 +184,9 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    omniauth (2.1.0)
+    omniauth (2.0.4)
       hashie (>= 3.4.6)
-      rack (>= 2.2.3)
+      rack (>= 1.6.2, < 3)
       rack-protection
     omniauth-gitlab (4.0.0)
       omniauth (~> 2.0)
@@ -190,11 +196,16 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.7.1)
+    omniauth-keycloak (1.4.0)
+      json-jwt (~> 1.13.0)
+      omniauth (~> 2.0.4)
+      omniauth-oauth2 (~> 1.7.1)
     omniauth-microsoft-office365 (0.0.8)
       omniauth
       omniauth-oauth2
-    omniauth-microsoft_graph (0.2.1)
-      omniauth-oauth2
+    omniauth-microsoft_graph (1.0.0)
+      omniauth (~> 2.0.4)
+      omniauth-oauth2 (~> 1.7.1)
     omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
@@ -348,6 +359,7 @@ DEPENDENCIES
   omniauth-github!
   omniauth-gitlab
   omniauth-google-oauth2
+  omniauth-keycloak
   omniauth-microsoft-office365
   omniauth-microsoft_graph
   omniauth-rails_csrf_protection

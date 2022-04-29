@@ -8,6 +8,7 @@ module Authenticable
     helper_method :github?
     helper_method :microsoft?
     helper_method :gitlab?
+    helper_method :keycloak?
   end
 
   protected
@@ -53,5 +54,9 @@ module Authenticable
 
   def gitlab?
     session[:provider] == "gitlab"
+  end
+
+  def keycloak?
+    session[:provider] == "keycloak"
   end
 end

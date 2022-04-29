@@ -13,6 +13,7 @@ x-services:
     environment:
       TZ: Asia/Tokyo
       RAILS_MASTER_KEY:
+      KEYCLOAK_URL:
     volumes:
       - .:/app
       - bundle:/usr/local/bundle
@@ -36,6 +37,7 @@ services:
       TZ: Asia/Tokyo
       RAILS_MASTER_KEY:
       RAILS_SERVE_STATIC_FILES: "true"
+      KEYCLOAK_URL:
     volumes:
       - production-db:/app/db
     profiles: [production]
