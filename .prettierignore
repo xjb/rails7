@@ -11,3 +11,6 @@ builds
 
 # Ignore all Markdown files:
 *.md
+
+# Ignore exported files:
+/srv/keycloak/realm-export.json
