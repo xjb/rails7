@@ -1,11 +1,41 @@
-<ul class="navbar-nav">
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDevTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="bi bi-tools"></i>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDevTools">
-      <li><%= link_to "Mailhog", "http://localhost:8025", target: "Mailhog", class: "dropdown-item" %></li>
-      <li><%= link_to "Keycloak", "http://localhost:8080", target: "Keycloak", class: "dropdown-item" %></li>
-    </ul>
-  </li>
-</ul>
+<% if Rails.env.development? %>
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDevTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-tools"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDevTools">
+        <li><%= link_to "Mailhog", "http://localhost:8025", target: "Mailhog", class: "dropdown-item" %></li>
+        <li><%= link_to "Keycloak", "http://localhost:8080", target: "Keycloak", class: "dropdown-item" %></li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+          <%= link_to "https://myaccount.google.com/", target: "Google", class: "dropdown-item" do %>
+            <i class="bi bi-google"></i> Google
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://github.com/", target: "GitHub", class: "dropdown-item" do %>
+            <i class="bi bi-github"></i> GitHub
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://account.microsoft.com/", target: "Microsoft", class: "dropdown-item" do %>
+            <i class="bi bi-microsoft"></i> Microsoft
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://gitlab.com/", target: "GitLab", class: "dropdown-item" do %>
+            <i class="bi bi-dot"></i> GitLab
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "https://twitter.com/", target: "Twitter", class: "dropdown-item" do %>
+            <i class="bi bi-twitter"></i> Twitter
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+<% end %>
