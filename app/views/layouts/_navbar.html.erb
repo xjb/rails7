@@ -10,13 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <%= render partial: "layouts/navbar/menus" %>
 
-      <% if Rails.env.development? %>
-        <%= render partial: "layouts/navbar/dev_tools" %>
-      <% end %>
+      <%= render partial: "layouts/navbar/dev_tools" %>
 
-      <% if signed_in? %>
-        <%= render partial: "layouts/navbar/signed_in_user" %>
-      <% end %>
+      <%= render partial: "layouts/navbar/signed_in_user" %>
     </div>
   </div>
 </nav>
